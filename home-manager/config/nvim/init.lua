@@ -35,7 +35,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     "neovim/nvim-lspconfig",
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    "ellisonleao/gruvbox.nvim",
     { "nvim-telescope/telescope.nvim", tag="0.1.4",
       dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" }
     },
@@ -119,11 +119,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require("catppuccin").setup({
-	flavour = "mocha",
-}) 
-
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "gruvbox"
 
 require("telescope").setup({
   extensions = {

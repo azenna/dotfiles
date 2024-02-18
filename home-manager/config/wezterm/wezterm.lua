@@ -99,7 +99,7 @@ config.keys = {
   },
 }
 
-config.color_scheme = "MaterialDarker"
+config.color_scheme = "Gruvbox dark, hard (base16)"
 
 config.enable_wayland = false
 
