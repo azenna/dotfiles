@@ -99,7 +99,7 @@ config.keys = {
   },
 }
 
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Moonfly (Gogh)"
 
 config.enable_wayland = false
 
