@@ -99,6 +99,8 @@ config.keys = {
   },
 }
 
+config.color_scheme = "MaterialDarker"
+
 config.enable_wayland = false
 
 return config
