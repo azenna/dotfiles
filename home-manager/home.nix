@@ -52,6 +52,7 @@
 
     #hyprrice
     xdg-desktop-portal-hyprland
+    hyprpaper
 
     #fonts
     fira-code
