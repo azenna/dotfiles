@@ -99,8 +99,6 @@ config.keys = {
   },
 }
 
-config.color_scheme = "Moonfly (Gogh)"
-
 config.enable_wayland = false
 
 return config
