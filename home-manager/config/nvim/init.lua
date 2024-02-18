@@ -69,6 +69,7 @@ require("lazy").setup({
     "j-morano/buffer_manager.nvim",
     "karb94/neoscroll.nvim",
     "norcalli/nvim-colorizer.lua",
+    "wez/wez.vim",
 })
 
 local lspconfig = require('lspconfig')
@@ -123,7 +124,7 @@ require("catppuccin").setup({
 	flavour = "mocha",
 }) 
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "wez"
 
 require("telescope").setup({
   extensions = {
