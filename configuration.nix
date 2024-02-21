@@ -93,8 +93,6 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  programs.hyprland.enable = true;
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

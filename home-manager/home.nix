@@ -25,6 +25,7 @@
 
     #development
     gcc
+    ghc
     rustup
     go
     zig
@@ -46,20 +47,6 @@
     yazi 
     glow
     fzf 
-
-    #rice
-    wofi
-    dunst
-    waybar
-
-    #hyprrice
-    xdg-desktop-portal-hyprland
-    hyprpaper
-
-    #fonts
-    fira-code
-    fira-code-symbols
-    font-awesome
 
     #cli
     xclip
