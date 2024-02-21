@@ -99,8 +99,7 @@ config.keys = {
   },
 }
 
-config.color_scheme = "Gruvbox dark, hard (base16)"
-
+config.color_scheme = "Catppuccin Mocha"
 config.enable_wayland = false
 
 return config

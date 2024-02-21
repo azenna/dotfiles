@@ -21,6 +21,7 @@
     
     #important
     wezterm
+    libreoffice
 
     #development
     gcc
@@ -31,6 +32,7 @@
     python3
 
     llvmPackages_17.stdenv
+    clang-tools_17
     stylish-haskell
     black
 

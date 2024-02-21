@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.relativenumber = true
 vim.o.number = true
@@ -34,8 +34,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000 },
     "neovim/nvim-lspconfig",
-    "ellisonleao/gruvbox.nvim",
     { "nvim-telescope/telescope.nvim", tag="0.1.4",
       dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" }
     },
@@ -46,8 +46,7 @@ require("lazy").setup({
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
     "phaazon/hop.nvim",
     "terrortylor/nvim-comment",
-    "neovimhaskell/haskell-vim",
-    "nvim-treesitter/nvim-treesitter",
+    "neovimhaskell/haskell-vim", "nvim-treesitter/nvim-treesitter",
     "L3MON4D3/LuaSnip",
     { "hrsh7th/nvim-cmp"
     , dependencies = 
@@ -119,7 +118,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.cmd.colorscheme "gruvbox"
+require("catppuccin").setup({
+    flavour = "mocha",
+})
+
+vim.cmd.colorscheme "catppuccin"
 
 require("telescope").setup({
   extensions = {
