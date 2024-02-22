@@ -7,8 +7,12 @@ vim.o.relativenumber = true
 vim.o.number = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.o.foldmethod = "indent"
 vim.o.scrolloff = 8
+
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
 vim.keymap.set('n', "<C-n>", "<cmd>bnext<CR>", {})
 vim.keymap.set('n', "<C-p>", "<cmd>bprev<CR>", {})
@@ -46,7 +50,6 @@ require("lazy").setup({
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
     "phaazon/hop.nvim",
     "terrortylor/nvim-comment",
-    "neovimhaskell/haskell-vim", "nvim-treesitter/nvim-treesitter",
     "L3MON4D3/LuaSnip",
     { "hrsh7th/nvim-cmp"
     , dependencies = 
@@ -69,6 +72,14 @@ require("lazy").setup({
     "karb94/neoscroll.nvim",
     "norcalli/nvim-colorizer.lua",
     "lambdalisue/suda.vim",
+    { "kevinhwang91/nvim-ufo"
+    , dependencies = { "kevinhwang91/promise-async" } },
+    { 
+      "nvim-neorg/neorg",
+      build = ":Neorg sync-parsers",
+      lazy = false,
+      dependencies = { "nvim-lua/plenary.nvim" },
+    },
 })
 
 local lspconfig = require('lspconfig')
@@ -165,6 +176,8 @@ require('nvim-treesitter.configs').setup({
     { "c"
     , "lua"
     , "vim"
+    , "zig"
+    , "nix"
     , "vimdoc"
     , "query"
     , "rust"
@@ -257,3 +270,29 @@ require("neoscroll").setup({
 })
 
 require("colorizer").setup({})
+
+local ufo = require("ufo")
+ufo.setup({
+  provider_selector = function(bufnr, filetype, buftype)
+    return {'treesitter', 'indent'}
+  end
+})
+vim.keymap.set('n', 'zR', ufo.openAllFolds)
+vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+
+require("neorg").setup {
+  load = {
+    ["core.defaults"] = {}, -- Loads default behaviour
+    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+    ["core.dirman"] = { -- Manages Neorg workspaces
+      config = {
+        workspaces = {
+          notes = "~/notes",
+          log = "~/notes/log",
+          learning = "~/notes/learning",
+          school = "~/notes/learning/school",
+        },
+      },
+    },
+  },
+}
