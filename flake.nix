@@ -2,19 +2,15 @@
   description = "";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-      # the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs.
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: 
+  outputs = { self, nixpkgs, home-manager, ... } : 
   {
     nixosConfigurations = {
       ephemerate = nixpkgs.lib.nixosSystem {
@@ -53,8 +49,8 @@
             services.xserver.desktopManager.gnome.enable = true;
 
             services.xserver = {
-              layout = "us";
-              xkbVariant = "";
+              xkb.layout = "us";
+              xkb.variant = "";
             };
 
             # Enable CUPS to print documents.
@@ -87,7 +83,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
             home-manager.users.zenna = import ./home-manager/home.nix;
 
           }

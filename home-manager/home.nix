@@ -1,14 +1,5 @@
 { config, pkgs, inputs, ... }:
-let
-  neovimconfig = import ./modules/nixvim;
-  nvim = inputs.nixvim.legacyPackages.x86_64-linux.makeNixvimWithModule {
-    inherit pkgs;
-    module = neovimconfig;
-  };
-in 
 {
-  # TODO please change the username & home direcotry to your own
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
@@ -22,7 +13,6 @@ in
     
     #important
     wezterm
-    nvim
 
     #development
     gcc
@@ -109,19 +99,13 @@ in
     ethtool
     pciutils # lspci
     usbutils # lsusb
-
-    catppuccin-gtk
   ];
 
-  #programs.neovim = {
-  #  enable = true;
-  #  defaultEditor = true;
-  #  viAlias = true;
-  #  vimAlias = true;
-  #};
-
-  programs.nixvim = {
-    colorschemes.catppuccin.enable = true;
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
   };
 
   # basic configuration of git, please change to your own
