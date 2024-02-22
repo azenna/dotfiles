@@ -1,15 +1,16 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
+let
+  neovimconfig = import ./modules/nixvim;
+  nvim = inputs.nixvim.legacyPackages.x86_64-linux.makeNixvimWithModule {
+    inherit pkgs;
+    module = neovimconfig;
+  };
+in 
 {
   # TODO please change the username & home direcotry to your own
+  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
 
   home.file.".config" = {
     source = ./config;
@@ -21,7 +22,7 @@
     
     #important
     wezterm
-    libreoffice
+    nvim
 
     #development
     gcc
@@ -70,6 +71,10 @@
     firefox
     chromium
 
+    #documents
+    libreoffice
+    evince
+
     # archives
     zip
     xz
@@ -104,13 +109,19 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    catppuccin-gtk
   ];
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
+  #programs.neovim = {
+  #  enable = true;
+  #  defaultEditor = true;
+  #  viAlias = true;
+  #  vimAlias = true;
+  #};
+
+  programs.nixvim = {
+    colorschemes.catppuccin.enable = true;
   };
 
   # basic configuration of git, please change to your own
@@ -151,9 +162,15 @@
     };
   };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  dconf.settings = {
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-to-workspace-1 = ["<Super>1"];
+      switch-to-workspace-2 = ["<Super>2"];
+      switch-to-workspace-3 = ["<Super>3"];
+      switch-to-workspace-4 = ["<Super>4"];
+    };
+    "org/gnome/desktop/input-sources".xkb-options = ["caps:ctrl_modifier"];
   };
 
   fonts.fontconfig.enable = true;

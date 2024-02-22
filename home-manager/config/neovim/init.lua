@@ -68,6 +68,7 @@ require("lazy").setup({
     "j-morano/buffer_manager.nvim",
     "karb94/neoscroll.nvim",
     "norcalli/nvim-colorizer.lua",
+    "lambdalisue/suda.vim",
 })
 
 local lspconfig = require('lspconfig')
@@ -145,8 +146,15 @@ vim.keymap.set('n', '<leader>t', ":Telescope file_browser path=%:p:h select_buff
 require("bufferline").setup()
 
 local hop = require('hop')
+local directions = require('hop.hint').HintDirection
 hop.setup()
 vim.keymap.set('n', '<leader>h', hop.hint_char1, {})
+vim.keymap.set('n', 's', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current })
+end, {remap=true})
+vim.keymap.set('n', 'S', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current })
+end, {remap=true})
 
 require('nvim_comment').setup({line_mapping = "<leader>cl", operator_mapping = "<leader>c"})
 
