@@ -8,6 +8,7 @@ vim.o.number = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.scrolloff = 8
+vim.o.termguicolors = true
 
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
@@ -38,3 +39,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+
+vim.cmd [[colorscheme catppuccin]]
