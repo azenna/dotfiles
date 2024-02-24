@@ -16,7 +16,7 @@
       ephemerate = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./systems/ephemerate/configuration.nix
           ({pkgs, ...}: {
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
