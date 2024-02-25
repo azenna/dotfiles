@@ -40,7 +40,7 @@
     fzf 
 
     #cli
-    bitwarden
+    bitwarden-cli
     xclip
     neofetch
     ripgrep # recursively searches directories for a regex pattern
