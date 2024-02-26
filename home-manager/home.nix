@@ -40,6 +40,7 @@
     fzf 
 
     #cli
+    pandoc
     bitwarden-cli
     xclip
     neofetch
