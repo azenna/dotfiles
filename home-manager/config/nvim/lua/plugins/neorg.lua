@@ -16,7 +16,7 @@ return {
               notes = "~/notes",
               log = "~/notes/log",
               learning = "~/notes/learning",
-              school = "~/notes/learning/school",
+              college = "~/notes/learning/college",
             },
           },
         },
