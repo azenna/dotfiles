@@ -17,7 +17,7 @@
         system = "x86_64-linux";
         modules = [
           ./systems/ephemerate/configuration.nix
-          ({pkgs, ...}: {
+          ({pkgs, config, ...}: {
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
             networking.hostName = "ephemerate"; # Define your hostname.
@@ -44,8 +44,10 @@
             };
 
             services.xserver.enable = true;
-            services.xserver.displayManager.sddm.enable = true;
-            services.xserver.desktopManager.plasma5.enable = true;
+            #services.xserver.displayManager.sddm.enable = true;
+            #services.xserver.desktopManager.plasma5.enable = true;
+            services.xserver.displayManager.gdm.enable = true;
+            services.xserver.desktopManager.gnome.enable = true;
 
             services.xserver = {
                 xkb.layout = "us";
@@ -75,8 +77,35 @@
 
             # Allow unfree packages
             nixpkgs.config.allowUnfree = true;
-
             programs.dconf.enable = true;
+            # Enable OpenGL
+            hardware.opengl = {
+              enable = true;
+              driSupport = true;
+              driSupport32Bit = true;
+            };
+
+            # Load nvidia driver for Xorg and Wayland
+            services.xserver.videoDrivers = ["nvidia"]; # or "nvidiaLegacy470 etc.
+
+            hardware.nvidia = {
+              modesetting.enable = true;
+              powerManagement.enable = false;
+              powerManagement.finegrained = false;
+              open = false;
+              nvidiaSettings = true;
+              package = config.boot.kernelPackages.nvidiaPackages.stable;
+            };
+
+            hardware.nvidia.prime = {
+              offload = {
+                enable = true;
+                enableOffloadCmd = true;
+              };
+# Make sure to use the correct Bus ID values for your system!
+              intelBusId = "PCI:0:2:0";
+              nvidiaBusId = "PCI:01:0:0";
+            };
           })
           home-manager.nixosModules.home-manager
           {
