@@ -1,5 +1,4 @@
-{ config, pkgs, inputs, ... }:
-{
+{ config, pkgs, inputs, ... }: {
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
@@ -8,9 +7,8 @@
     recursive = true;
   };
 
-
   home.packages = with pkgs; [
-    
+
     #important
     wezterm
 
@@ -29,7 +27,7 @@
     haskellPackages.fourmolu
     black
     nixfmt
-    prettier
+    nodePackages.prettier
     stylua
 
     nil
@@ -37,11 +35,12 @@
     vscode-langservers-extracted
     gopls
     haskell-language-server
-	
+    lua-language-server
+
     #tui
-    yazi 
+    yazi
     glow
-    fzf 
+    fzf
 
     #cli
     azure-cli
@@ -81,17 +80,17 @@
     # networking tools
     mtr # A network diagnostic tool
     iperf3
-    dnsutils  # `dig` + `nslookup`
+    dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    ipcalc # it is a calculator for the IPv4/v6 addresses
 
     # it provides the command `nom` works just like `nix`
     nix-output-monitor
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -132,11 +131,8 @@
   programs.starship = {
     enable = true;
     # custom settings
-    settings = {
-      add_newline = false;
-    };
+    settings = { add_newline = false; };
   };
-
 
   programs.bash = {
     enable = true;
@@ -153,16 +149,17 @@
     };
   };
 
-   dconf.settings = {
+  dconf.settings = {
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
     "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = ["<Super>1"];
-      switch-to-workspace-2 = ["<Super>2"];
-      switch-to-workspace-3 = ["<Super>3"];
-      switch-to-workspace-4 = ["<Super>4"];
+      switch-to-workspace-1 = [ "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
     };
-    "org/gnome/desktop/input-sources".xkb-options = ["caps:ctrl_modifier"];
-  }; fonts.fontconfig.enable = true;
+    "org/gnome/desktop/input-sources".xkb-options = [ "caps:ctrl_modifier" ];
+  };
+  fonts.fontconfig.enable = true;
 
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
