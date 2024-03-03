@@ -26,7 +26,11 @@
     llvmPackages_17.stdenv
     clang-tools_17
     stylish-haskell
+    haskellPackages.fourmolu
     black
+    nixfmt
+    prettier
+    stylua
 
     nil
     nodePackages_latest.pyright
