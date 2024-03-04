@@ -11,10 +11,6 @@
     source = ./config;
     recursive = true;
   };
-  home.file."bin" = {
-    source = ./scripts;
-    recursive = true;
-  };
 
   home.packages = with pkgs; [
     #important
@@ -149,22 +145,6 @@
     # custom settings
     settings = {add_newline = false;};
   };
-
-  #programs.bash = {
-  #  enable = true;
-  #  enableCompletion = true;
-  #  # TODO add your cusotm bashrc here
-  #  bashrcExtra = ''
-  #    eval "$(starship init bash)"
-  #    export PATH="$PATH:$HOME/bin;"
-  #  '';
-
-  #  # set some aliases, feel free to add more or remove some
-  #  shellAliases = {
-  #    ls = "eza";
-  #    cat = "bat";
-  #  };
-  #};
 
   programs.zsh = {
     enable = true;
