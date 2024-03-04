@@ -171,11 +171,13 @@
       ls = "eza";
       cat = "bat";
     };
+
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
     initExtra = ''
       eval "$(starship init zsh)"
-      export PATH="$PATH:$HOME/bin;"
+      path+=('home/zenna/bin')
+      export PATH
     '';
     zplug = {
       enable = true;
