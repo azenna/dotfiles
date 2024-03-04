@@ -178,6 +178,7 @@
     history.path = "${config.xdg.dataHome}/zsh/history";
     initExtra = ''
       eval "$(starship init zsh)"
+      eval "$(atuin init zsh)"
     '';
     zplug = {
       enable = true;
