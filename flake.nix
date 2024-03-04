@@ -10,15 +10,23 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     nixosConfigurations = {
       ephemerate = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./systems/ephemerate/configuration.nix
-          ({ pkgs, config, ... }: {
-
-            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          ({
+            pkgs,
+            config,
+            ...
+          }: {
+            nix.settings.experimental-features = ["nix-command" "flakes"];
             networking.hostName = "ephemerate"; # Define your hostname.
 
             # Enable networking
@@ -71,7 +79,7 @@
             users.users.zenna = {
               isNormalUser = true;
               description = "Zenna Allwein";
-              extraGroups = [ "networkmanager" "wheel" ];
+              extraGroups = ["networkmanager" "wheel"];
             };
 
             # Allow unfree packages
@@ -85,8 +93,7 @@
             };
 
             # Load nvidia driver for Xorg and Wayland
-            services.xserver.videoDrivers =
-              [ "nvidia" ]; # or "nvidiaLegacy470 etc.
+            services.xserver.videoDrivers = ["nvidia"]; # or "nvidiaLegacy470 etc.
 
             hardware.nvidia = {
               modesetting.enable = true;
@@ -112,7 +119,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.zenna = import ./home-manager/home.nix;
-
           }
         ];
       };

@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
@@ -12,7 +17,6 @@
   };
 
   home.packages = with pkgs; [
-
     #important
     wezterm
 
@@ -128,14 +132,14 @@
 
   programs.zoxide = {
     enable = true;
-    options = [ "--cmd cd" ];
+    options = ["--cmd cd"];
   };
 
   # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
     # custom settings
-    settings = { add_newline = false; };
+    settings = {add_newline = false;};
   };
 
   programs.bash = {
@@ -156,12 +160,12 @@
   dconf.settings = {
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
     "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = [ "<Super>1" ];
-      switch-to-workspace-2 = [ "<Super>2" ];
-      switch-to-workspace-3 = [ "<Super>3" ];
-      switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-1 = ["<Super>1"];
+      switch-to-workspace-2 = ["<Super>2"];
+      switch-to-workspace-3 = ["<Super>3"];
+      switch-to-workspace-4 = ["<Super>4"];
     };
-    "org/gnome/desktop/input-sources".xkb-options = [ "caps:ctrl_modifier" ];
+    "org/gnome/desktop/input-sources".xkb-options = ["caps:ctrl_modifier"];
   };
   fonts.fontconfig.enable = true;
 
