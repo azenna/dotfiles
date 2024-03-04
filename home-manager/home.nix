@@ -56,6 +56,7 @@
     yazi
     glow
     fzf
+    btop
 
     #cli
     azure-cli
