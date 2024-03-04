@@ -48,6 +48,7 @@
     haskellPackages.threadscope
 
     #tui
+    atuin
     yazi
     glow
     fzf
