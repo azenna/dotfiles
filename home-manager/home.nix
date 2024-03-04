@@ -145,18 +145,38 @@
     settings = {add_newline = false;};
   };
 
-  programs.bash = {
+  #programs.bash = {
+  #  enable = true;
+  #  enableCompletion = true;
+  #  # TODO add your cusotm bashrc here
+  #  bashrcExtra = ''
+  #    export PATH="$PATH:$HOME/bin;"
+  #  '';
+
+  #  # set some aliases, feel free to add more or remove some
+  #  shellAliases = {
+  #    ls = "eza";
+  #    cat = "bat";
+  #  };
+  #};
+
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
-    # TODO add your cusotm bashrc here
-    bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin;"
-    '';
+    enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
 
-    # set some aliases, feel free to add more or remove some
     shellAliases = {
       ls = "eza";
       cat = "bat";
+    };
+    history.size = 10000;
+    history.path = "${config.xdg.dataHome}/zsh/history";
+    zplug = {
+      enable = true;
+      plugins = [
+        {name = "zsh-users/zsh-autosuggestions";}
+      ];
     };
   };
 
