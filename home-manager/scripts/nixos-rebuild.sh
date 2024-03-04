@@ -17,7 +17,7 @@ echo "NixOS Rebuilding..."
 sudo nixos-rebuild switch --flake ~/nixos/#ephemerate &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current)
+current=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | grep current)
 
 # Commit all changes witih the generation metadata
 git commit -am "$current"
