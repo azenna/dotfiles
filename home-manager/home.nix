@@ -21,8 +21,8 @@
     wezterm
 
     #scripts
-    (import ./scripts/rebuild.nix)
-    (import ./scripts/home_install.nix)
+    (import ./scripts/rebuild.nix {inherit pkgs;})
+    (import ./scripts/home_install.nix {inherit pkgs;})
 
     #development
     gcc

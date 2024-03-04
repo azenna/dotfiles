@@ -1,14 +1,14 @@
-with import <nixpkgs> {};
-  writeShellScriptBin "<script_name>" ''
-    #!/usr/bin/env bash
+{pkgs}:
+pkgs.writeShellScriptBin "home_install" ''
+  #!/usr/bin/env bash
 
-    set -e
-    # cd to your home-manager dir
-    pushd ~/nixos/home-manager/
+  set -e
+  # cd to your home-manager dir
+  pushd ~/nixos/home-manager/
 
-    $EDITOR ./home.nix
+  $EDITOR ./home.nix
 
-    $HOME/bin/nixos-rebuild.sh
+  $HOME/bin/nixos-rebuild.sh
 
-    popd
-  ''
+  popd
+''
