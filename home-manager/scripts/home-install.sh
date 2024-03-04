@@ -6,6 +6,6 @@ pushd ~/nixos/home-manager/
 
 $EDITOR ./home.nix
 
-nixos-rebuild.sh
+$HOME/bin/nixos-rebuild.sh
 
 popd
