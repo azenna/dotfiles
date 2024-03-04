@@ -145,21 +145,21 @@
     settings = {add_newline = false;};
   };
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    # TODO add your cusotm bashrc here
-    bashrcExtra = ''
-      eval "$(starship init bash)"
-      export PATH="$PATH:$HOME/bin;"
-    '';
+  #programs.bash = {
+  #  enable = true;
+  #  enableCompletion = true;
+  #  # TODO add your cusotm bashrc here
+  #  bashrcExtra = ''
+  #    eval "$(starship init bash)"
+  #    export PATH="$PATH:$HOME/bin;"
+  #  '';
 
-    # set some aliases, feel free to add more or remove some
-    shellAliases = {
-      ls = "eza";
-      cat = "bat";
-    };
-  };
+  #  # set some aliases, feel free to add more or remove some
+  #  shellAliases = {
+  #    ls = "eza";
+  #    cat = "bat";
+  #  };
+  #};
 
   programs.zsh = {
     enable = true;
@@ -173,6 +173,10 @@
     };
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
+    initExtra = ''
+      eval "$(starship init zsh)"
+      export PATH="$PATH:$HOME/bin;"
+    '';
     zplug = {
       enable = true;
       plugins = [
