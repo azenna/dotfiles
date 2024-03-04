@@ -8,7 +8,8 @@ pkgs.writeShellScriptBin "home_install" ''
 
   $EDITOR ./home.nix
 
-  $HOME/bin/nixos-rebuild.sh
+  # see ./rebuild.nix
+  rebuild
 
   popd
 ''
