@@ -119,7 +119,7 @@
     enable = true;
     userName = "azenna";
     userEmail = "zrallwein@gmail.com";
-
+    extraConfig.pull.rebase = true;
   };
 
   programs.zoxide = {

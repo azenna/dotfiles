@@ -10,14 +10,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } : 
-  {
+  outputs = { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       ephemerate = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./systems/ephemerate/configuration.nix
-          ({pkgs, config, ...}: {
+          ({ pkgs, config, ... }: {
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
             networking.hostName = "ephemerate"; # Define your hostname.
@@ -50,8 +49,8 @@
             services.xserver.desktopManager.gnome.enable = true;
 
             services.xserver = {
-                xkb.layout = "us";
-                xkb.variant = "";
+              xkb.layout = "us";
+              xkb.variant = "";
             };
 
             # Enable CUPS to print documents.
@@ -86,7 +85,8 @@
             };
 
             # Load nvidia driver for Xorg and Wayland
-            services.xserver.videoDrivers = ["nvidia"]; # or "nvidiaLegacy470 etc.
+            services.xserver.videoDrivers =
+              [ "nvidia" ]; # or "nvidiaLegacy470 etc.
 
             hardware.nvidia = {
               modesetting.enable = true;
@@ -102,7 +102,7 @@
                 enable = true;
                 enableOffloadCmd = true;
               };
-# Make sure to use the correct Bus ID values for your system!
+              # Make sure to use the correct Bus ID values for your system!
               intelBusId = "PCI:0:2:0";
               nvidiaBusId = "PCI:01:0:0";
             };
