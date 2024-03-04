@@ -117,6 +117,13 @@
               intelBusId = "PCI:0:2:0";
               nvidiaBusId = "PCI:01:0:0";
             };
+            # Binary Cache for Haskell.nix
+            nix.settings.trusted-public-keys = [
+              "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+            ];
+            nix.settings.substituters = [
+              "https://cache.iog.io"
+            ];
           })
           home-manager.nixosModules.home-manager
           {
