@@ -11,7 +11,7 @@ return {
 			rust = { "rustfmt" },
 			haskell = { "fourmolu" },
 			cpp = { "clang_format" },
-			nix = { "nixfmt" },
+			nix = { "alejandra" },
 		},
 		format_on_save = {
 			lsp_fallback = true,

@@ -6,6 +6,10 @@
     source = ./config;
     recursive = true;
   };
+  home.file."bin" = {
+    source = ./scripts;
+    recursive = true;
+  };
 
   home.packages = with pkgs; [
 
@@ -26,7 +30,7 @@
     stylish-haskell
     haskellPackages.fourmolu
     black
-    nixfmt
+    alejandra
     nodePackages.prettier
     stylua
 
@@ -139,7 +143,7 @@
     enableCompletion = true;
     # TODO add your cusotm bashrc here
     bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin"
+      export PATH="$PATH:$HOME/bin;"
     '';
 
     # set some aliases, feel free to add more or remove some
