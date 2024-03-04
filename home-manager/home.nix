@@ -45,6 +45,8 @@
     haskell-language-server
     lua-language-server
 
+    haskellPackages.threadscope
+
     #tui
     yazi
     glow
