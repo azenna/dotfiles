@@ -20,6 +20,7 @@ sudo nixos-rebuild switch --flake ~/nixos/#ephemerate &>nixos-switch.log || (cat
 current=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | grep current)
 
 # Commit all changes witih the generation metadata
+git add .
 git commit -am "$current"
 
 # Back to where you were
