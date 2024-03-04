@@ -170,14 +170,14 @@
     shellAliases = {
       ls = "eza";
       cat = "bat";
+      rebuild = "$HOME/bin/nixos-rebuild.sh";
+      home-install = "$HOME/bin/home-install.sh";
     };
 
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
     initExtra = ''
       eval "$(starship init zsh)"
-      path+=('home/zenna/bin')
-      export PATH
     '';
     zplug = {
       enable = true;
