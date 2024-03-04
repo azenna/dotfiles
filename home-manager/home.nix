@@ -20,6 +20,10 @@
     #important
     wezterm
 
+    #scripts
+    (import ./scripts/rebuild.nix)
+    (import ./scripts/home_install.nix)
+
     #development
     gcc
     ghc
@@ -170,8 +174,6 @@
     shellAliases = {
       ls = "eza";
       cat = "bat";
-      rebuild = "$HOME/bin/nixos-rebuild.sh";
-      home-install = "$HOME/bin/home-install.sh";
     };
 
     history.size = 10000;
