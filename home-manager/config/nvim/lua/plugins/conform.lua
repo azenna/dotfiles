@@ -18,7 +18,7 @@ return {
 			timeout_ms = 500,
 		},
 		formatters = {
-			haskell = {
+			fourmolu = {
 				prepend_args = { "--indentation", "2" },
 			},
 		},
