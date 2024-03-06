@@ -9,7 +9,7 @@ return {
 			-- Use a sub-list to run only the first available formatter
 			javascript = { "prettier" },
 			rust = { "rustfmt" },
-			haskell = { "fourmolu", prepend_args = { "--indentation=2" } },
+			haskell = { "fourmolu" },
 			cpp = { "clang_format" },
 			nix = { "alejandra" },
 		},
@@ -18,4 +18,10 @@ return {
 			timeout_ms = 500,
 		},
 	},
+
+	init = function()
+		require("conform").formatters.haskell = {
+			prepend_args = { "--indentation=2" },
+		}
+	end,
 }
