@@ -17,11 +17,10 @@ return {
 			lsp_fallback = true,
 			timeout_ms = 500,
 		},
+		formatters = {
+			haskell = {
+				prepend_args = { "--indentation", "2" },
+			},
+		},
 	},
-
-	init = function()
-		require("conform").formatters.haskell = {
-			prepend_args = { "--indentation=2" },
-		}
-	end,
 }
