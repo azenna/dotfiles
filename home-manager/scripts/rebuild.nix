@@ -5,7 +5,7 @@ pkgs.writeShellScriptBin "rebuild" ''
   set -e
 
   # cd to your config dir
-  pushd ~/nixos/
+  pushd ~/.dotfiles/
 
   # Autoformat your nix files
   alejandra . >/dev/null

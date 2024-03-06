@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "home_install" ''
 
   set -e
   # cd to your home-manager dir
-  pushd ~/nixos/home-manager/
+  pushd ~/.dotfiles/home-manager/
 
   $EDITOR ./home.nix
 
