@@ -9,7 +9,7 @@ return {
 			-- Use a sub-list to run only the first available formatter
 			javascript = { "prettier" },
 			rust = { "rustfmt" },
-			haskell = { "fourmolu" },
+			haskell = { "fourmolu", prepend_args = { "--indentation=2" } },
 			cpp = { "clang_format" },
 			nix = { "alejandra" },
 		},
