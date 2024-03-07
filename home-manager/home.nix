@@ -54,6 +54,8 @@
     btop
 
     #cli
+    tldr
+    atuin
     azure-cli
     pandoc
     bitwarden-cli
@@ -163,6 +165,7 @@
     bashrcExtra = ''
       set -o vi
       eval "$(starship init bash)"
+      eval "$(atuin init bash)"
     '';
   };
 
