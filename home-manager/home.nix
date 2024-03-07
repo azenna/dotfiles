@@ -21,6 +21,7 @@
     #fonts
     fira-code
     fira-code-symbols
+    fira-code-nerdfont
 
     #scripts
     (import ./scripts/rebuild.nix {inherit pkgs;})
