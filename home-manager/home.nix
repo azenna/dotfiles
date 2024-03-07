@@ -18,7 +18,7 @@
     wezterm
     zellij
 
-    #font
+    #fonts
     fira-code
     fira-code-symbols
 
