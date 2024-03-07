@@ -61,6 +61,7 @@
     btop
 
     #cli
+    atuin
     tldr
     azure-cli
     pandoc
