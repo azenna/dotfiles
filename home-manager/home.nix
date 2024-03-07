@@ -14,7 +14,7 @@
 
   home.packages = with pkgs; [
     #important
-    # wezterm
+    wezterm
 
     #scripts
     (import ./scripts/rebuild.nix {inherit pkgs;})
@@ -123,14 +123,6 @@
     enable = true;
     settings = {
       theme = "catppuccin-mocha";
-    };
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font.size = 11;
-      shell.program = "bash";
     };
   };
 
