@@ -14,7 +14,7 @@
 
   home.packages = with pkgs; [
     #important
-    alacritty
+    kitty
     wezterm
     zellij
 
@@ -132,11 +132,6 @@
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
-  };
-
-  programs.kitty = {
-    enable = true;
-    theme = "Catppuccin-Mocha";
   };
 
   # basic configuration of git, please change to your own
