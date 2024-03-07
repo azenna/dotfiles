@@ -124,6 +124,7 @@
     enable = true;
     settings = {
       theme = "catppuccin-mocha";
+      copy_command = "xclip -selection clipboard";
     };
   };
 
