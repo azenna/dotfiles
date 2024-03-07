@@ -14,7 +14,9 @@
 
   home.packages = with pkgs; [
     #important
-    wezterm
+    # wezterm
+    zellij
+    alacritty
 
     #scripts
     (import ./scripts/rebuild.nix {inherit pkgs;})
