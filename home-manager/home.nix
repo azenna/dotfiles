@@ -15,7 +15,6 @@
   home.packages = with pkgs; [
     #important
     # wezterm
-    zellij
 
     #scripts
     (import ./scripts/rebuild.nix {inherit pkgs;})
@@ -119,6 +118,14 @@
     pciutils # lspci
     usbutils # lsusb
   ];
+
+  programs.zellij = {
+    enable = true;
+    settings = {
+      theme = "cattpuccin";
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
