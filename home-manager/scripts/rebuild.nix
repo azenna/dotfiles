@@ -23,7 +23,7 @@ pkgs.writeShellScriptBin "rebuild" ''
 
   # Commit all changes witih the generation metadata
   git add .
-  git commit -am "$current"
+  git commit -m "$current"
 
   # Back to where you were
   popd
