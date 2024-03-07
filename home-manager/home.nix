@@ -156,8 +156,8 @@
 
     bashrcExtra = ''
       set -o vi
-      eval "$(starship init zsh)"
-      eval "$(atuin init zsh)"
+      eval "$(starship init bash)"
+      eval "$(atuin init bash)"
     '';
   };
 
