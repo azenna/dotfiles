@@ -62,7 +62,6 @@
 
     #cli
     tldr
-    atuin
     azure-cli
     pandoc
     bitwarden-cli
