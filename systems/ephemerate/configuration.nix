@@ -62,6 +62,7 @@
     isNormalUser = true;
     description = "Zenna Allwein";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.bash;
   };
 
   # Allow unfree packages
