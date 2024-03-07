@@ -18,6 +18,10 @@
     wezterm
     zellij
 
+    #font
+    fira-code
+    fira-code-symbols
+
     #scripts
     (import ./scripts/rebuild.nix {inherit pkgs;})
     (import ./scripts/home_install.nix {inherit pkgs;})
