@@ -16,7 +16,6 @@
     #important
     # wezterm
     zellij
-    alacritty
 
     #scripts
     (import ./scripts/rebuild.nix {inherit pkgs;})
@@ -120,6 +119,13 @@
     pciutils # lspci
     usbutils # lsusb
   ];
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.size = 11;
+      shell.program = "bash";
+    };
+  };
 
   programs.neovim = {
     enable = true;
