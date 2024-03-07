@@ -62,14 +62,12 @@
     isNormalUser = true;
     description = "Zenna Allwein";
     extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh;
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   programs.dconf.enable = true;
-  programs.zsh.enable = true;
 
   # Enable OpenGL
   hardware.opengl = {
