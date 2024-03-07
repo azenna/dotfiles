@@ -182,12 +182,16 @@
 
   programs.nushell = {
     enable = true;
-    extraConfig = ''
-    '';
+    configFile.source = ./config/nu/config.nu;
     shellAliases = {
       ls = "eza";
       cat = "bat";
     };
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
   };
 
   dconf.settings = {
