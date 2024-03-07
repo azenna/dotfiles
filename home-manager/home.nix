@@ -175,7 +175,7 @@
           fi
       fi
       set -o vi
-      eval "$(atuin init bash)"
+      eval "$(starship init bash)"
     '';
   };
 
