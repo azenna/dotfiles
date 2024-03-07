@@ -146,29 +146,19 @@
     settings = {add_newline = false;};
   };
 
-  programs.zsh = {
+  programs.bash = {
     enable = true;
-    enableCompletion = true;
-    enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
 
     shellAliases = {
       ls = "eza";
       cat = "bat";
     };
 
-    history.size = 10000;
-    history.path = "${config.xdg.dataHome}/zsh/history";
-    initExtra = ''
+    bashrcExtra = ''
+      set -o vi
       eval "$(starship init zsh)"
       eval "$(atuin init zsh)"
     '';
-    zplug = {
-      enable = true;
-      plugins = [
-        {name = "zsh-users/zsh-autosuggestions";}
-      ];
-    };
   };
 
   dconf.settings = {
