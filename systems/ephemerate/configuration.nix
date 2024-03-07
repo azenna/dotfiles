@@ -56,12 +56,12 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  users.defaultUserShell = pkgs.bash;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zenna = {
     isNormalUser = true;
     description = "Zenna Allwein";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.nushell;
   };
 
   # Allow unfree packages
