@@ -48,7 +48,6 @@
     haskellPackages.threadscope
 
     #tui
-    atuin
     yazi
     glow
     fzf
@@ -164,7 +163,6 @@
     bashrcExtra = ''
       set -o vi
       eval "$(starship init bash)"
-      eval "$(atuin init bash)"
     '';
   };
 
