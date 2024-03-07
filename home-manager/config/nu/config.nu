@@ -18,4 +18,4 @@ $env.config = {
  }
 }
 
-source ./atuin.nu
+source ~/.config/nu/atuin.nu
