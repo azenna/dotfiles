@@ -8,7 +8,6 @@ local config = wezterm.config_builder()
 
 config.disable_default_key_bindings = true
 config.font_size = 12
-config.default_prog = { "zellij" }
 
 -- config.keys = {
 --   -- This will create a new split and run your default program inside it
