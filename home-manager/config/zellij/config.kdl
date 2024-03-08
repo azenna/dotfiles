@@ -146,7 +146,7 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" {
         bind "Alt G" { SwitchToMode "Locked"; }
-        bind "Alt G" { Quit; }
+        bind "Alt Q" { Quit; }
         bind "Alt n" { NewPane; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
