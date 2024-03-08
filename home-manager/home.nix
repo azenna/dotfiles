@@ -154,31 +154,20 @@
     settings = {add_newline = false;};
   };
 
-  # programs.bash = {
-  #   enable = true;
-  #
-  #   shellAliases = {
-  #     ls = "eza";
-  #     cat = "bat";
-  #   };
-  #
-  #   bashrcExtra = ''
-  #     if [[ -z "$ZELLIJ" ]]; then
-  #         if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-  #             zellij attach -c
-  #         else
-  #             zellij
-  #         fi
-  #
-  #         if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-  #           exit
-  #         fi
-  #     fi
-  #     set -o vi
-  #     eval "$(starship init bash)"
-  #     eval "$(atuin init bash --disable-up-arrow)"
-  #   '';
-  # };
+  programs.bash = {
+    enable = true;
+
+    shellAliases = {
+      ls = "eza";
+      cat = "bat";
+    };
+
+    bashrcExtra = ''
+      set -o vi
+      eval "$(starship init bash)"
+      eval "$(atuin init bash --disable-up-arrow)"
+    '';
+  };
 
   programs.nushell = {
     enable = true;
