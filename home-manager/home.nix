@@ -184,7 +184,6 @@
     enable = true;
     configFile.source = ./config/nu/config.nu;
     shellAliases = {
-      ls = "eza";
       cat = "bat";
     };
   };
