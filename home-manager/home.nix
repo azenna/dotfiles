@@ -174,6 +174,8 @@
     configFile.source = ./config/nu/config.nu;
     shellAliases = {
       cat = "bat";
+      l = "eza -alh";
+      ll = "ls -l";
     };
   };
 
