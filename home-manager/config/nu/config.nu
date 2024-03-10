@@ -1,6 +1,6 @@
-let carapace_completer = {|spans|
-carapace $spans.0 nushell $spans | from json
-}
+source ~/.config/nu/carapace.nu
+source ~/.config/nu/atuin.nu
+
 $env.config = {
  show_banner: false,
  completions: {
@@ -18,4 +18,3 @@ $env.config = {
  }
 }
 
-source ~/.config/nu/atuin.nu
