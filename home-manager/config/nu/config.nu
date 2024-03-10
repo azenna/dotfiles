@@ -1,5 +1,4 @@
 source ~/.config/nu/carapace.nu
-source ~/.config/nu/atuin.nu
 
 $env.config = {
  show_banner: false,
@@ -18,3 +17,4 @@ $env.config = {
  }
 }
 
+source ~/.config/nu/atuin.nu
