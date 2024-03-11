@@ -15,7 +15,6 @@
   home.packages = with pkgs; [
     #important
     kitty
-    wezterm
     zellij
 
     #fonts
