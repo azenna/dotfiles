@@ -1,4 +1,4 @@
-{
-  "folke/twilight.nvim",
-  opts = {}
+return {
+	"folke/twilight.nvim",
+	opts = {},
 }
