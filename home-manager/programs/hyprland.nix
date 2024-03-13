@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     hyprpaper
-    wofi
+    (import ../scripts/rofi/launcher.nix {inherit pkgs;})
     copyq
   ];
   wayland.windowManager.hyprland.enable = true;
