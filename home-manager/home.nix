@@ -17,6 +17,10 @@
     kitty
     zellij
 
+    #hyprland
+    hyprpaper
+    wofi
+
     #fonts
     fira-code
     fira-code-symbols
