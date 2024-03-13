@@ -3,7 +3,11 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  windowManager = import ./programs/hyprland.nix {inherit pkgs;};
+in {
+  inherit windowManager;
+
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
@@ -12,123 +16,121 @@
     recursive = true;
   };
 
-  home.packages = with pkgs; [
-    #important
-    kitty
-    zellij
+  home.packages = with pkgs;
+    [
+      #important
+      kitty
+      zellij
 
-    #hyprland
-    hyprpaper
-    wofi
+      #fonts
+      fira-code
+      fira-code-symbols
+      fira-code-nerdfont
 
-    #fonts
-    fira-code
-    fira-code-symbols
-    fira-code-nerdfont
+      #scripts
+      (import ./scripts/rebuild.nix {inherit pkgs;})
+      (import ./scripts/home_install.nix {inherit pkgs;})
 
-    #scripts
-    (import ./scripts/rebuild.nix {inherit pkgs;})
-    (import ./scripts/home_install.nix {inherit pkgs;})
+      #development
+      gcc
+      ghc
+      rustup
+      go
+      zig
+      cabal-install
+      python3
 
-    #development
-    gcc
-    ghc
-    rustup
-    go
-    zig
-    cabal-install
-    python3
+      llvmPackages_17.stdenv
+      clang-tools_17
+      stylish-haskell
+      haskellPackages.fourmolu
+      black
+      alejandra
+      nodePackages.prettier
+      stylua
 
-    llvmPackages_17.stdenv
-    clang-tools_17
-    stylish-haskell
-    haskellPackages.fourmolu
-    black
-    alejandra
-    nodePackages.prettier
-    stylua
+      nil
+      nodePackages_latest.pyright
+      vscode-langservers-extracted
+      gopls
+      haskell-language-server
+      lua-language-server
 
-    nil
-    nodePackages_latest.pyright
-    vscode-langservers-extracted
-    gopls
-    haskell-language-server
-    lua-language-server
+      haskellPackages.threadscope
 
-    haskellPackages.threadscope
+      #tui
+      yazi
+      glow
+      fzf
+      btop
 
-    #tui
-    yazi
-    glow
-    fzf
-    btop
+      #cli
+      atuin
+      tldr
+      azure-cli
+      pandoc
+      bitwarden-cli
+      xclip
+      neofetch
+      ripgrep # recursively searches directories for a regex pattern
+      jq # A lightweight and flexible command-line JSON processor
+      yq-go # yaml processer https://github.com/mikefarah/yq
+      eza # A modern replacement for ‘ls’
+      bat
+      cowsay
+      file
+      which
+      tree
+      gnused
+      gnutar
+      gawk
+      zstd
+      gnupg
 
-    #cli
-    atuin
-    tldr
-    azure-cli
-    pandoc
-    bitwarden-cli
-    xclip
-    neofetch
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processer https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
-    bat
-    cowsay
-    file
-    which
-    tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
+      #web
+      firefox
+      chromium
 
-    #web
-    firefox
-    chromium
+      #documents
+      libreoffice
+      evince
 
-    #documents
-    libreoffice
-    evince
+      # archives
+      zip
+      xz
+      unzip
+      p7zip
 
-    # archives
-    zip
-    xz
-    unzip
-    p7zip
+      # networking tools
+      mtr # A network diagnostic tool
+      iperf3
+      dnsutils # `dig` + `nslookup`
+      ldns # replacement of `dig`, it provide the command `drill`
+      aria2 # A lightweight multi-protocol & multi-source command-line download utility
+      socat # replacement of openbsd-netcat
+      nmap # A utility for network discovery and security auditing
+      ipcalc # it is a calculator for the IPv4/v6 addresses
 
-    # networking tools
-    mtr # A network diagnostic tool
-    iperf3
-    dnsutils # `dig` + `nslookup`
-    ldns # replacement of `dig`, it provide the command `drill`
-    aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    socat # replacement of openbsd-netcat
-    nmap # A utility for network discovery and security auditing
-    ipcalc # it is a calculator for the IPv4/v6 addresses
+      # it provides the command `nom` works just like `nix`
+      nix-output-monitor
 
-    # it provides the command `nom` works just like `nix`
-    nix-output-monitor
+      btop # replacement of htop/nmon
+      iotop # io monitoring
+      iftop # network monitoring
 
-    btop # replacement of htop/nmon
-    iotop # io monitoring
-    iftop # network monitoring
+      # system call monitoring
+      strace # system call monitoring
+      ltrace # library call monitoring
+      lsof # list open files
 
-    # system call monitoring
-    strace # system call monitoring
-    ltrace # library call monitoring
-    lsof # list open files
-
-    # system tools
-    sysstat
-    lm_sensors # for `sensors` command
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
-  ];
+      # system tools
+      sysstat
+      lm_sensors # for `sensors` command
+      ethtool
+      pciutils # lspci
+      usbutils # lsusb
+    ]
+    ++ [windowManager.windowManagerPackages];
 
   programs.neovim = {
     enable = true;
@@ -187,16 +189,6 @@
     enableNushellIntegration = true;
   };
 
-  #dconf.settings = {
-  #  "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  #  "org/gnome/desktop/wm/keybindings" = {
-  #    switch-to-workspace-1 = ["<Super>1"];
-  #    switch-to-workspace-2 = ["<Super>2"];
-  #    switch-to-workspace-3 = ["<Super>3"];
-  #    switch-to-workspace-4 = ["<Super>4"];
-  #  };
-  #  "org/gnome/desktop/input-sources".xkb-options = ["caps:ctrl_modifier"];
-  #};
   wayland.windowManager.hyprland.enable = true;
   fonts.fontconfig.enable = true;
 
