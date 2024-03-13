@@ -186,7 +186,6 @@
     enableNushellIntegration = true;
   };
 
-  wayland.windowManager.hyprland.enable = true;
   fonts.fontconfig.enable = true;
 
   # You can update home Manager without changing this value. See

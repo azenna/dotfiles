@@ -4,4 +4,5 @@
     wofi
     copyq
   ];
+  wayland.windowManager.hyprland.enable = true;
 }
