@@ -1,9 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  hyprlock,
+  ...
+}: {
+  imports = [hyprlock.homeManagerModules.hyprlock];
   home.packages = with pkgs; [
-    hyprpaper
+    hyprlock
     rofi
     (import ../scripts/rofi/launcher.nix {inherit pkgs;})
     copyq
   ];
+  programs.hyprlock.enable = true;
   wayland.windowManager.hyprland.enable = true;
 }
