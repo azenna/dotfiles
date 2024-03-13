@@ -1,5 +1,5 @@
-{pkgs}: {
-  windowManagerPackages = with pkgs; [
+{pkgs, ...}: {
+  home.packages = with pkgs; [
     hyprpaper
     wofi
     copyq
