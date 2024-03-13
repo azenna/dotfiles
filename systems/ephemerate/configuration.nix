@@ -67,6 +67,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.hyprland.enable = true;
   programs.dconf.enable = true;
 
   # Enable OpenGL
