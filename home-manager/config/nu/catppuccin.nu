@@ -1,4 +1,3 @@
-
 const color_palette = {
     rosewater: "#f5e0dc"
     flamingo: "#f2cdcd"

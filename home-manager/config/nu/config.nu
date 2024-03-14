@@ -1,7 +1,10 @@
 source ~/.config/nu/carapace.nu
-source ~/.config/nu/catppuccin.nu
+
+use ~/.config/nu/catppuccin.nu
+
 
 $env.config = {
+ color_config: (catppuccin),
  show_banner: false,
  completions: {
  case_sensitive: false # case-sensitive completions
