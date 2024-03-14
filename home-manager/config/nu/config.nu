@@ -1,4 +1,5 @@
 source ~/.config/nu/carapace.nu
+source ~/.config/nu/catppuccin.nu
 
 $env.config = {
  show_banner: false,
