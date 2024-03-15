@@ -34,12 +34,22 @@ $crust: #11111b;
   background-color: transparent;
 }
 
-.timebox {
+.stat {
   background-color: $base;
-  color: $red;
   font-size: large;
   margin-right: 10px;
+  padding: 5px;
+  border-radius: 20px;
 }
+
+.color-mauve {
+  color: $mauve;
+}
+
+.color-red {
+  color: $red;
+}
+
 
 // .timebox {
 //   background-color: $base;
