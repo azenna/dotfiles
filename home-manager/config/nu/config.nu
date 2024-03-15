@@ -5,6 +5,7 @@ use ~/.config/nu/catppuccin.nu
 
 $env.config = {
  color_config: (catppuccin),
+ edit_mode: vi,
  show_banner: false,
  completions: {
  case_sensitive: false # case-sensitive completions
