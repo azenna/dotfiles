@@ -6,7 +6,7 @@
 
   programs.nushell = {
     enable = true;
-    configFile.source = ./config/nu/config.nu;
+    configFile.source = ./config/config.nu;
     shellAliases = {
       cat = "bat";
       l = "eza -alh";

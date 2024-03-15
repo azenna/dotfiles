@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.file.".config/starship.toml" = {
+  home.file.".config/starship/starship.toml" = {
     source = ./starship.toml;
   };
   # starship - an customizable prompt for any shell
