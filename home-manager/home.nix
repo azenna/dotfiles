@@ -19,6 +19,7 @@
     #important
     kitty
     zellij
+    eww
 
     #fonts
     fira-code
