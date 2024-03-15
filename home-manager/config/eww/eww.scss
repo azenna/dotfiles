@@ -1,16 +1,29 @@
-$bg: #1e1e2e;
-$bg-alt: #313244;
-$fg: #cdd6f4;
-$fg-alt: #bac2de;
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
 $red: #f38ba8;
-$green: #a6e3a1;
+$maroon: #eba0ac;
+$peach: #fab387;
 $yellow: #f9e2af;
-$orange: #fab387;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
 $blue: #89b4fa;
-$purple: #cba6f7;
-$cyan: #74c7ec;
-$gray: #565f89;
-$gray-alt: #292E42;
+$lavender: #b4befe;
+$text: #cdd6f4;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
 
 * {
   all: unset; //Unsets everything so you can style everything from scratch
@@ -19,38 +32,20 @@ $gray-alt: #292E42;
 //Global Styles
 .bar {
   background-color: transparent;
-  color: #b0b4bc;
-  padding: 10px;
 }
 
-// Styles on classes (see eww.yuck for more information)
-
-.sidestuff slider {
-  all: unset;
-  color: #ffd5cd;
-}
-
-.metric scale trough highlight {
-  all: unset;
-  background-color: #D35D6E;
-  color: #000000;
-  border-radius: 10px;
-}
-
-.metric scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-
-.label-ram {
+.timebox {
+  background-color: $base;
+  color: $red;
   font-size: large;
+  margin-right: 10px;
 }
 
-.workspaces button:hover {
-  color: #D35D6E;
-}
+// .timebox {
+//   background-color: $base;
+//   margin-top: 2px;
+//   font-size: large;
+//   padding: 8px;
+//   color: $red;
+//   border-radius: 20px;
+// }
