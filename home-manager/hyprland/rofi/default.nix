@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  home.file.".config/rofi" = {
-    source = ./config;
+  home.file.".config/rofi/" = {
+    source = ../rofi;
     recursive = true;
   };
   home.packages = with pkgs; [
