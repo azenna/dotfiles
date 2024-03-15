@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  imports = [./eww ./zellij ./kitty ./nvim ./nu ./starship ./wallpapers];
+  imports = [./zellij ./kitty ./nvim ./nu ./starship ./wallpapers];
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
