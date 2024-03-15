@@ -6,6 +6,7 @@
   imports = [hyprlock.homeManagerModules.hyprlock];
   home.packages = with pkgs; [
     hyprlock
+    hyprpaper
     rofi
     (import ../scripts/rofi/launcher.nix {inherit pkgs;})
     copyq
