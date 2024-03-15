@@ -27,7 +27,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.zenna = import ./home-manager/home.nix;
+            home-manager.users.zenna = import ./home-manager/hyprland;
             home-manager.extraSpecialArgs = {inherit hyprlock;};
           }
         ];
