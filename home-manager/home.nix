@@ -5,13 +5,13 @@
   ...
 }: {
   imports = [
-    ./programs/hyprland.nix
+    ./hyprland
   ];
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
   home.file.".config" = {
-    source = ./config;
+    source = ./common/config;
     recursive = true;
   };
 
@@ -19,7 +19,6 @@
     #important
     kitty
     zellij
-    eww-wayland
 
     #fonts
     fira-code
@@ -27,8 +26,8 @@
     fira-code-nerdfont
 
     #scripts
-    (import ./scripts/rebuild.nix {inherit pkgs;})
-    (import ./scripts/home_install.nix {inherit pkgs;})
+    (import ./common/scripts/rebuild.nix {inherit pkgs;})
+    (import ./common/scripts/home_install.nix {inherit pkgs;})
 
     #development
     gcc
@@ -174,7 +173,7 @@
 
   programs.nushell = {
     enable = true;
-    configFile.source = ./config/nu/config.nu;
+    configFile.source = ./common/config/nu/config.nu;
     shellAliases = {
       cat = "bat";
       l = "eza -alh";
