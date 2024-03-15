@@ -4,19 +4,11 @@
   inputs,
   ...
 }: {
+  imports = [./eww ./zellij ./kitty ./nvim ./nu ./starship ./wallpapers];
   home.username = "zenna";
   home.homeDirectory = "/home/zenna";
 
-  home.file.".config" = {
-    source = ./config;
-    recursive = true;
-  };
-
   home.packages = with pkgs; [
-    #important
-    kitty
-    zellij
-
     #fonts
     fira-code
     fira-code-symbols
@@ -126,13 +118,6 @@
     usbutils # lsusb
   ];
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-  };
-
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
@@ -144,13 +129,6 @@
   programs.zoxide = {
     enable = true;
     options = ["--cmd cd"];
-  };
-
-  # starship - an customizable prompt for any shell
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {add_newline = false;};
   };
 
   programs.bash = {
@@ -166,21 +144,6 @@
       eval "$(starship init bash)"
       eval "$(atuin init bash --disable-up-arrow)"
     '';
-  };
-
-  programs.nushell = {
-    enable = true;
-    configFile.source = ./config/nu/config.nu;
-    shellAliases = {
-      cat = "bat";
-      l = "eza -alh";
-      ll = "ls -l";
-    };
-  };
-
-  programs.carapace = {
-    enable = true;
-    enableNushellIntegration = true;
   };
 
   fonts.fontconfig.enable = true;
