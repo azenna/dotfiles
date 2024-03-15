@@ -9,6 +9,8 @@
     hyprpaper
     rofi
     (import ../scripts/rofi/launcher.nix {inherit pkgs;})
+    (import ../scripts/eww/active_workspace.nix {inherit pkgs;})
+    (import ../scripts/eww/workspaces.nix {inherit pkgs;})
     copyq
   ];
   programs.hyprlock.enable = true;

@@ -4,36 +4,42 @@
     (stats)))
 
 (defwidget stats []
-  (box :class "stats" :orientation "h" :valign "center" :halign "end" :space-evenly false
+  (box :class "stats" :orientation "h" :valign "center" :halign "end" :space-evenly true
     (timebox)
     (battery)))
 
 (defwidget timebox []
-  (box :class "stat color-mauve" "  ${time}"))
+  (box :class "color-mauve" "  ${time}"))
 
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")
 
 (defwidget battery []
-  (box :class "stat color-red" "   ${EWW_BATTERY["BAT0"].capacity}%"))
+  (box :class "color-red" "   ${EWW_BATTERY["BAT0"].capacity}%"))
 
-(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/workspaces")
-(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/active_workspace")
+(deflisten workspaces :initial "[]" "eww_workspaces")
+(deflisten current_workspace :initial "1" "eww_active_workspace")
+
+(defvar colors "[
+  \"mauve\",
+  \"red\",
+  \"maroon\",
+  \"peach\",
+  \"yellow\",
+  \"green\",
+  \"teal\",
+  \"sky\",
+  \"sapphire\",
+  \"blue\"
+]")
 
 (defwidget workspaces []
-  (box  :class "workspaces-widget"
-    (box :space-evenly true
-      (label :text "${workspaces}${current_workspace}" :visible true)
-      (for workspace in workspaces
-        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-            (label :text "${workspace.id}")
-            )
-          )
-        )
-      )
-    )
-  )
+  (box :space-evenly true
+    (for workspace in workspaces
+      (label :class "color-${colors[workspace.id - 1]} ${workspace.id == current_workspace ? "active" : ""}" 
+             :text " "))
+    (label :visible false :text "${current_workspace}")))
+
 
 (defwindow bar
   :monitor 0

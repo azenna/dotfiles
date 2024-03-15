@@ -34,12 +34,9 @@ $crust: #11111b;
   background-color: transparent;
 }
 
-.stat {
-  background-color: $base;
+.stats {
   font-size: large;
-  margin-right: 10px;
   padding: 5px;
-  border-radius: 20px;
 }
 
 .color-mauve {
@@ -50,16 +47,42 @@ $crust: #11111b;
   color: $red;
 }
 
+.color-maroon {
+  color: $maroon;
+}
+
+.color-peach {
+  color: $peach;
+}
+
+.color-yellow {
+  color: $yellow;
+}
+
+.color-green {
+  color: $green;
+}
+
+.color-teal {
+  color: $teal;
+}
+
+.color-sky {
+  color: $sky;
+}
+
+.color-sapphire {
+  color: $sapphire;
+}
+
+.color-blue {
+  color: $blue;
+}
+
 .workspace-entry {
   color: white;
 }
 
-
-// .timebox {
-//   background-color: $base;
-//   margin-top: 2px;
-//   font-size: large;
-//   padding: 8px;
-//   color: $red;
-//   border-radius: 20px;
-// }
+.active {
+  background-color: $base;
+}
