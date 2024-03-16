@@ -48,17 +48,17 @@
   (eventbox
     :onhover "${eww} update show_power=true"
     :onhoverlost "${eww} update show_power=false"
-    (box :space-evenly false :class "mr20 text-large color-peach"
+    (box :space-evenly false :class "mr20 text-large"
       (eventbox :onclick "poweroff"
-        (label :text ""))
+        (label :class "color-peach" :text ""))
       (revealer 
         :reveal show_power
         :transition "slideleft"
         (box
           (eventbox :onclick "reboot"
-            (label :class "ml10" :text ""))
+            (label :class "ml10 color-yellow" :text ""))
           (eventbox :onclick "eww_lock" :class "ml20"
-            (label :class "ml10 mr10" :text "")))))))
+            (label :class "ml10 mr10 color-green" :text "")))))))
 
 (defpoll netpoll :interval "10s"
   "eww_network")
