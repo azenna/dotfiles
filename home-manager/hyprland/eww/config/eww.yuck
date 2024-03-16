@@ -57,7 +57,7 @@
         (box
           (eventbox :onclick "reboot"
             (label :class "ml10" :text ""))
-          (eventbox :onclick "WAYLAND_DEBUG=1 hyprlock &> /tmp/hyprlock.out.txt" :class "ml20"
+          (eventbox :onclick "eww_lock" :class "ml20"
             (label :class "ml10 mr10" :text "")))))))
 
 (defpoll netpoll :interval "10s"
