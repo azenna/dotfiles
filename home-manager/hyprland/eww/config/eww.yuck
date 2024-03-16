@@ -8,6 +8,7 @@
 (defwidget stats []
   (box :orientation "h" :valign "center" :halign "end" :space-evenly false
     (powermenu)
+    (net)
     (timebox)
     (battery)))
 
@@ -58,6 +59,23 @@
             (label :class "ml10" :text ""))
           (eventbox :onclick "hyprlock" :class "ml20"
             (label :class "ml10 mr10" :text "")))))))
+
+(defpoll netpoll :interval "10s"
+  "eww_network")
+
+(defvar show_net false)
+
+(defwidget net []
+  (eventbox
+    :onhover "${eww} update show_net=true"
+    :onhoverlost "${eww} update show_net=false"
+    (box :space-evenly false :class "mr20 text-large color-peach"
+      (label :text "")
+      (revealer 
+        :reveal show_net
+        :transition "slideleft"
+        (label :class "ml20" :text netpoll)))))
+
 
 (deflisten workspaces :initial "[]" "eww_workspaces")
 (deflisten current_workspace :initial "1" "eww_active_workspace")
