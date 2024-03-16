@@ -57,7 +57,7 @@
         (box
           (eventbox :onclick "reboot"
             (label :class "ml10" :text ""))
-          (eventbox :onclick "hyprlock" :class "ml20"
+          (eventbox :onclick "bash -c \"hyprlock\"" :class "ml20"
             (label :class "ml10 mr10" :text "")))))))
 
 (defpoll netpoll :interval "10s"
