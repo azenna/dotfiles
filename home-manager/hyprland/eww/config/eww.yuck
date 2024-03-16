@@ -48,7 +48,7 @@
   (eventbox
     :onhover "${eww} update show_power=true"
     :onhoverlost "${eww} update show_power=false"
-    (box :space-evenly false :class "mr20 text-large color-maroon"
+    (box :space-evenly false :class "mr20 text-large color-peach"
       (eventbox :onclick "poweroff"
         (label :text ""))
       (revealer 
@@ -69,7 +69,7 @@
   (eventbox
     :onhover "${eww} update show_net=true"
     :onhoverlost "${eww} update show_net=false"
-    (box :space-evenly false :class "mr20 text-large color-peach"
+    (box :space-evenly false :class "mr20 text-large color-maroon"
       (label :text "")
       (revealer 
         :reveal show_net
