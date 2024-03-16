@@ -1,30 +1,45 @@
+(defvar eww "eww -c .")
+
 (defwidget bar []
   (box :orientation "h"
     (workspaces)
     (stats)))
 
 (defwidget stats []
-  (box :class "stats" :orientation "h" :valign "center" :halign "end" :space-evenly false
+  (box :orientation "h" :valign "center" :halign "end" :space-evenly false
     (timebox)
     (battery)))
 
-(defwidget timebox []
-  (label :class "color-mauve" :text "  ${time}"))
+(defvar show_time false)
 
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")
 
-(defvar show_battery_perc false)
+(defwidget timebox []
+  (eventbox
+    :onhover "${eww} update show_time=true"
+    :onhoverlost "${eww} update show_time=false"
+    (box :space-evenly false :class "mr20 text-large color-mauve"
+      (label :text "")
+      (revealer
+        :transition "slideleft"
+        :reveal show_time
+        (label :class "ml20" :text time)))))
+      
+
+(defvar show_bat false)
+
 (defwidget battery []
   (eventbox
-    :onhover "eww update show_battery_perc=true"
-    :onhoverlost "eww update show_battery_perc=false"
-    :class "color-red"
-    (box :space-evenly false
-      (label :text " ")
-      (expander 
-        :expanded show_battery_perc 
-        (label :text "${EWW_BATTERY["BAT0"].capacity} %")))))
+    :onhover "${eww} update show_bat=true"
+    :onhoverlost "${eww} update show_bat=false"
+    (box :space-evenly false :class "mr20 text-large color-red"
+      (label :text "")
+      (revealer 
+        :reveal show_battery_perc 
+        :transition "slideleft"
+        (label :class "ml20" :text "${EWW_BATTERY["BAT0"].capacity}%")))))
+
 
 (deflisten workspaces :initial "[]" "eww_workspaces")
 (deflisten current_workspace :initial "1" "eww_active_workspace")
