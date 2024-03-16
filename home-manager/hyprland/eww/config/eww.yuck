@@ -1,4 +1,4 @@
-(defvar eww "eww -c .")
+(defvar eww "eww")
 
 (defwidget bar []
   (box :orientation "h"
@@ -7,6 +7,7 @@
 
 (defwidget stats []
   (box :orientation "h" :valign "center" :halign "end" :space-evenly false
+    (powermenu)
     (timebox)
     (battery)))
 
@@ -19,7 +20,7 @@
   (eventbox
     :onhover "${eww} update show_time=true"
     :onhoverlost "${eww} update show_time=false"
-    (box :space-evenly false :class "mr20 text-large color-mauve"
+    (box :space-evenly false :class "mr20 text-large color-red"
       (label :text "")
       (revealer
         :transition "slideleft"
@@ -33,13 +34,30 @@
   (eventbox
     :onhover "${eww} update show_bat=true"
     :onhoverlost "${eww} update show_bat=false"
-    (box :space-evenly false :class "mr20 text-large color-red"
+    (box :space-evenly false :class "mr20 text-large color-mauve"
       (label :text "")
       (revealer 
         :reveal show_bat
         :transition "slideleft"
         (label :class "ml20" :text "${EWW_BATTERY["BAT0"].capacity}%")))))
 
+(defvar show_power false)
+
+(defwidget powermenu []
+  (eventbox
+    :onhover "${eww} update show_power=true"
+    :onhoverlost "${eww} update show_power=false"
+    (box :space-evenly false :class "mr20 text-large color-maroon"
+      (eventbox :onclick "poweroff"
+        (label :text ""))
+      (revealer 
+        :reveal show_power
+        :transition "slideleft"
+        (box
+          (eventbox :onclick "reboot"
+            (label :class "ml10" :text ""))
+          (eventbox :onclick "hyprlock" :class "ml20"
+            (label :class "ml10 mr10" :text "")))))))
 
 (deflisten workspaces :initial "[]" "eww_workspaces")
 (deflisten current_workspace :initial "1" "eww_active_workspace")
