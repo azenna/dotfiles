@@ -1,4 +1,4 @@
-(defvar eww "eww -c .")
+(defvar eww "eww")
 
 (defwidget bar []
   (box :orientation "h"
@@ -8,10 +8,12 @@
 (defwidget stats []
   (box :orientation "h" :valign "center" :halign "end" :space-evenly false
     (powermenu)
+    (bright)
+    (vol)
     (net)
     (time)
     (battery
-    (vol))))
+    )))
 
 (defwidget stat [label show icon class]
   (eventbox
@@ -30,7 +32,6 @@
 (defwidget time [] 
   (stat :label "show_time" :show show_time :icon "" :class "color-red"
     (label :class "ml20" :text timepoll)))
-
       
 (defvar show_bat false)
 (defwidget battery []
@@ -39,12 +40,12 @@
 
 (defvar show_power false)
 (defwidget powermenu []
-  (stat :label "show_power" :show show_power :icon "" :class "color-peach"
+  (stat :label "show_power" :show show_power :icon "" :class "color-green"
     (box
       (eventbox :onclick "reboot"
-        (label :class "ml10 color-yellow" :text ""))
+        (label :class "ml10 color-teal" :text ""))
       (eventbox :onclick "eww_lock" :class "ml20"
-        (label :class "ml10 mr10 color-green" :text "")))))
+        (label :class "ml10 mr10 color-sapphire" :text "")))))
 
 (defpoll netpoll :interval "10s"
   "eww_network")
@@ -56,10 +57,24 @@
 (defpoll volpoll :interval "1s" "eww_volumne")
 (defvar show_vol false)
 (defwidget vol []
-  (stat :label "show_vol" :show show_vol :icon "" :class "color-yellow"
-    (label :class "ml20" :text volpoll)))
+  (stat :label "show_vol" :show show_vol :icon "" :class "color-peach"
+    (scale
+      :class "slider ml10"
+      :min 0
+      :max 100
+      :orientation "h"
+      :value volpoll)))
 
-(defpoll bright :interval "1s" "eww_brightness")
+(defpoll brightpoll :interval "1s" "eww_brightness")
+(defvar show_bright false)
+(defwidget bright []
+  (stat :label "show_bright" :show show_bright :icon "" :class "color-yellow"
+    (scale
+      :class "slider ml10"
+      :min 0
+      :max 100
+      :orientation "h"
+      :value brightpoll)))
 
 (deflisten workspaces :initial "[]" "eww_workspaces")
 (deflisten current_workspace :initial "1" "eww_active_workspace")

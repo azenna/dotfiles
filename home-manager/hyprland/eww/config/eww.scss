@@ -101,3 +101,15 @@ $crust: #11111b;
 .active {
   background-color: $base;
 }
+
+.slider trough highlight {
+  background-color: $mauve;
+  border-radius: 10px;
+}
+
+.slider trough {
+  background-color: $base;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 40px;
+}
