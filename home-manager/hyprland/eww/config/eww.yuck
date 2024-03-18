@@ -1,4 +1,4 @@
-(defvar eww "eww")
+(defvar eww "eww -c .")
 
 (defwidget bar []
   (box :orientation "h"
@@ -9,73 +9,57 @@
   (box :orientation "h" :valign "center" :halign "end" :space-evenly false
     (powermenu)
     (net)
-    (timebox)
-    (battery)))
+    (time)
+    (battery
+    (vol))))
 
-(defvar show_time false)
-
-(defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
-
-(defwidget timebox []
+(defwidget stat [label show icon class]
   (eventbox
-    :onhover "${eww} update show_time=true"
-    :onhoverlost "${eww} update show_time=false"
-    (box :space-evenly false :class "mr20 text-large color-red"
-      (label :text "")
+    :onhover "${eww} update ${label}=true"
+    :onhoverlost "${eww} update ${label}=false"
+    (box :space-evenly false :class "mr20 text-large ${class}"
+      (label :text icon)
       (revealer
         :transition "slideleft"
-        :reveal show_time
-        (label :class "ml20" :text time)))))
+        :reveal show
+        (children)))))
+
+(defvar show_time false)
+(defpoll timepoll :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+(defwidget time [] 
+  (stat :label "show_time" :show show_time :icon "" :class "color-red"
+    (label :class "ml20" :text timepoll)))
+
       
-
 (defvar show_bat false)
-
 (defwidget battery []
-  (eventbox
-    :onhover "${eww} update show_bat=true"
-    :onhoverlost "${eww} update show_bat=false"
-    (box :space-evenly false :class "mr20 text-large color-mauve"
-      (label :text "")
-      (revealer 
-        :reveal show_bat
-        :transition "slideleft"
-        (label :class "ml20" :text "${EWW_BATTERY["BAT0"].capacity}%")))))
+  (stat :label "show_bat" :show show_bat :icon "" :class "color-mauve"
+    (label :class "ml20" :text "${EWW_BATTERY["BAT0"].capacity}%")))
 
 (defvar show_power false)
-
 (defwidget powermenu []
-  (eventbox
-    :onhover "${eww} update show_power=true"
-    :onhoverlost "${eww} update show_power=false"
-    (box :space-evenly false :class "mr20 text-large"
-      (eventbox :onclick "poweroff"
-        (label :class "color-peach" :text ""))
-      (revealer 
-        :reveal show_power
-        :transition "slideleft"
-        (box
-          (eventbox :onclick "reboot"
-            (label :class "ml10 color-yellow" :text ""))
-          (eventbox :onclick "eww_lock" :class "ml20"
-            (label :class "ml10 mr10 color-green" :text "")))))))
+  (stat :label "show_power" :show show_power :icon "" :class "color-peach"
+    (box
+      (eventbox :onclick "reboot"
+        (label :class "ml10 color-yellow" :text ""))
+      (eventbox :onclick "eww_lock" :class "ml20"
+        (label :class "ml10 mr10 color-green" :text "")))))
 
 (defpoll netpoll :interval "10s"
   "eww_network")
-
 (defvar show_net false)
-
 (defwidget net []
-  (eventbox
-    :onhover "${eww} update show_net=true"
-    :onhoverlost "${eww} update show_net=false"
-    (box :space-evenly false :class "mr20 text-large color-maroon"
-      (label :text "")
-      (revealer 
-        :reveal show_net
-        :transition "slideleft"
-        (label :class "ml20" :text netpoll)))))
+  (stat :label "show_net" :show show_net :icon "" :class "color-maroon"
+    (label :class "ml20" :text netpoll)))
 
+(defpoll volpoll :interval "1s" "eww_volumne")
+(defvar show_vol false)
+(defwidget vol []
+  (stat :label "show_vol" :show show_vol :icon "" :class "color-yellow"
+    (label :class "ml20" :text volpoll)))
+
+(defpoll bright :interval "1s" "eww_brightness")
 
 (deflisten workspaces :initial "[]" "eww_workspaces")
 (deflisten current_workspace :initial "1" "eww_active_workspace")

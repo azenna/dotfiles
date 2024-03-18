@@ -10,5 +10,7 @@
     (import ./scripts/workspaces.nix {inherit pkgs;})
     (import ./scripts/network.nix {inherit pkgs;})
     (import ./scripts/lock.nix {inherit pkgs;})
+    (import ./scripts/volumne.nix {inherit pkgs;})
+    (import ./scripts/brightness.nix {inherit pkgs;})
   ];
 }
