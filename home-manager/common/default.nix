@@ -9,6 +9,7 @@
   home.homeDirectory = "/home/zenna";
 
   home.packages = with pkgs; [
+    spotube
     #fonts
     fira-code
     fira-code-symbols
