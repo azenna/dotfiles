@@ -1,3 +1,4 @@
 return {
-  "lambdalisue/suda.vim",
+	"lambdalisue/suda.vim",
+	"ThePrimeagen/vim-be-good",
 }

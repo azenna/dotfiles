@@ -6,7 +6,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./cachix.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -34,10 +33,6 @@
   };
 
   services.xserver.enable = true;
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver = {
     xkb.layout = "us";
@@ -67,9 +62,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  programs.hyprland.enable = true;
-  programs.dconf.enable = true;
 
   # Enable OpenGL
   hardware.opengl = {
