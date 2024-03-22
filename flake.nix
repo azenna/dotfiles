@@ -8,14 +8,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #hyprlock.url = "github:hyprwm/Hyprlock";
+    hyprlock.url = "github:hyprwm/Hyprlock";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    #hyprlock,
+    hyprlock,
     ...
   }: {
     nixosConfigurations = {
@@ -27,9 +27,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            #home-manager.users.zenna = import ./home-manager/hyprland;
-            home-manager.users.zenna = import ./home-manager/gnome;
-            #home-manager.extraSpecialArgs = {inherit hyprlock;};
+            home-manager.users.zenna = import ./home-manager/hyprland;
+            #home-manager.users.zenna = import ./home-manager/gnome;
+            home-manager.extraSpecialArgs = {inherit hyprlock;};
           }
         ];
       };
