@@ -9,19 +9,19 @@ return {
 			-- Use a sub-list to run only the first available formatter
 			javascript = { "prettier" },
 			rust = { "rustfmt" },
-			haskell = { "fourmolu" },
 			cpp = { "clang_format" },
 			nix = { "alejandra" },
 			ocaml = { "ocamlformat" },
+      gleam = { "gleam" }
 		},
 		format_on_save = {
-			lsp_fallback = true,
+			lsp_fallback = false,
 			timeout_ms = 500,
 		},
 		formatters = {
-			fourmolu = {
+			--[[ fourmolu = {
 				prepend_args = { "--indentation", "2" },
-			},
+			}, ]]
 		},
 	},
 }

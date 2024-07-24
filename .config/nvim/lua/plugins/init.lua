@@ -4,6 +4,7 @@ return {
 	"folke/twilight.nvim",
 	"folke/zen-mode.nvim",
 	"preservim/vim-pencil",
+  "kevinhwang91/nvim-bqf",
 	{
 		"mvllow/modes.nvim",
 		tag = "v0.2.0",
@@ -24,4 +25,8 @@ return {
 		event = "VeryLazy",
 		opts = {},
 	},
+  {
+    "mcauley-penney/tidy.nvim",
+    config = true,
+  },
 }
