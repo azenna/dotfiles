@@ -12,7 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 #
-path+="/home/zenna/.cargo/bin"
+path+="~/.cargo/bin"
+path+="$HOME/.local/bin"
 export PATH
 
 source $ZSH/oh-my-zsh.sh
@@ -25,7 +26,21 @@ plugins=(
 bindkey -v
 bindkey "^y" autosuggest-accept
 
+alias ls="eza"
+alias l="eza -l"
+alias cat="bat"
+alias dc="docker compose"
+
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh --cmd cd)"
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# linux
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# mac
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/bin/google-cloud-sdk/path.zsh.inc
+
+[ -f "/Users/a327793/.ghcup/env" ] && . "/Users/a327793/.ghcup/env" # ghcup-env

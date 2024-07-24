@@ -20,6 +20,7 @@ return {
 			vim.keymap.set("n", "<leader>fg", telescope_api.live_grep, {})
 			vim.keymap.set("n", "<leader>fb", telescope_api.buffers, {})
 			vim.keymap.set("n", "<leader>fh", telescope_api.help_tags, {})
+			vim.keymap.set("n", "<leader>fs", telescope_api.grep_string, {})
 			vim.keymap.set("n", "<leader>t", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 		end,
 	},

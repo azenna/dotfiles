@@ -1,8 +1,0 @@
-return {
-	"folke/trouble.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {},
-	init = function()
-		vim.keymap.set("n", "<leader>e", ":Trouble<CR>")
-	end,
-}
