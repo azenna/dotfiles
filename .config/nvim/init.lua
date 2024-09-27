@@ -22,17 +22,17 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>", {})
 vim.keymap.set("n", "<C-A-]>", "<cmd>tn<CR>", {})
 vim.keymap.set("n", "<C-A-[>", "<cmd>tp<CR>", {})
 
-RT_CW = ''
-vim.keymap.set("n", "<C-]>", function()
-  local cw = vim.fn.expand("<cword>")
-  if cw ~= RT_CW then
-    vim.fn.execute("tag " .. cw)
-  elseif not pcall(vim.cmd, "tnext") then
-      vim.cmd[[trewind]]
-  end
-  RT_CW = cw
-  vim.fn.search(cw, 'c', vim.fn.line('.'))
-end, {})
+-- RT_CW = ''
+-- vim.keymap.set("n", "<C-]>", function()
+--   local cw = vim.fn.expand("<cword>")
+--   if cw ~= RT_CW then
+--     vim.fn.execute("tag " .. cw)
+--   elseif not pcall(vim.cmd, "tnext") then
+--       vim.cmd[[trewind]]
+--   end
+--   RT_CW = cw
+--   vim.fn.search(cw, 'c', vim.fn.line('.'))
+-- end, {})
 
 -- location commands
 vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", {})

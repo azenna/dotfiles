@@ -19,9 +19,9 @@ return {
 			timeout_ms = 500,
 		},
 		formatters = {
-			--[[ fourmolu = {
+		 fourmolu = {
 				prepend_args = { "--indentation", "2" },
-			}, ]]
+			},
 		},
 	},
 }

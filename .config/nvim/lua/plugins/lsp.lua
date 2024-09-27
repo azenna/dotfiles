@@ -18,9 +18,9 @@ return {
       },
     })
     lspconfig.clangd.setup({ capabilities = capabilities })
-    -- lspconfig.hls.setup({ capabilities = capabilities })
+    lspconfig.hls.setup({ capabilities = capabilities })
     lspconfig.pyright.setup({ capabilities = capabilities })
-    lspconfig.tsserver.setup({ capabilities = capabilities })
+    lspconfig.ts_ls.setup({ capabilities = capabilities })
     lspconfig.nil_ls.setup({ capabilities = capabilities })
     lspconfig.html.setup({ capabilities = capabilities })
     lspconfig.cssls.setup({ capabilities = capabilities })
@@ -28,5 +28,6 @@ return {
     lspconfig.lua_ls.setup({ capabilities = capabilities })
     lspconfig.ocamllsp.setup({ capabilities = capabilities })
     lspconfig.gleam.setup({ capabilities = capabilities })
+    lspconfig.gopls.setup({ capabilities = capabilities })
   end,
 }

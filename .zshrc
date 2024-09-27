@@ -16,6 +16,8 @@ path+="$HOME/.cargo/bin"
 path+="$HOME/.local/bin"
 path+="$HOME/.ghcup/bin"
 path+="$HOME/.local/application/intellij/bin"
+path+="/opt/go/bin"
+path+="$HOME/go/bin"
 export PATH
 
 source $ZSH/oh-my-zsh.sh
@@ -47,3 +49,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source ~/bin/google-cloud-sdk/path.zsh.inc
 # [ -f "/Users/a327793/.ghcup/env" ] && . "/Users/a327793/.ghcup/env" # ghcup-env
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
