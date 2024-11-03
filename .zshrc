@@ -18,6 +18,7 @@ path+="$HOME/.ghcup/bin"
 path+="$HOME/.local/application/intellij/bin"
 path+="/opt/go/bin"
 path+="$HOME/go/bin"
+path+="/opt/exiv2-0.28.3-Linux64/bin"
 export PATH
 
 source $ZSH/oh-my-zsh.sh

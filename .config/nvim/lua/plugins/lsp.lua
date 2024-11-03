@@ -17,6 +17,7 @@ return {
         ["rust-analyzer"] = {},
       },
     })
+    lspconfig.jdtls.setup({ capabilities = capabilities })
     lspconfig.clangd.setup({ capabilities = capabilities })
     lspconfig.hls.setup({ capabilities = capabilities })
     lspconfig.pyright.setup({ capabilities = capabilities })
