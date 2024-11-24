@@ -26,6 +26,7 @@ source $ZSH/oh-my-zsh.sh
 plugins=(
   git
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 bindkey -v
@@ -41,16 +42,3 @@ eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh --cmd cd)"
 
 EDITOR=/usr/bin/nvim
-
-
-# linux
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# mac
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/bin/google-cloud-sdk/path.zsh.inc
-# [ -f "/Users/a327793/.ghcup/env" ] && . "/Users/a327793/.ghcup/env" # ghcup-env
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

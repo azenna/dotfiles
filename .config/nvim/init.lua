@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.relativenumber = true
 vim.o.number = true
@@ -22,17 +22,19 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>", {})
 vim.keymap.set("n", "<C-A-]>", "<cmd>tn<CR>", {})
 vim.keymap.set("n", "<C-A-[>", "<cmd>tp<CR>", {})
 
--- RT_CW = ''
--- vim.keymap.set("n", "<C-]>", function()
---   local cw = vim.fn.expand("<cword>")
---   if cw ~= RT_CW then
---     vim.fn.execute("tag " .. cw)
---   elseif not pcall(vim.cmd, "tnext") then
---       vim.cmd[[trewind]]
---   end
---   RT_CW = cw
---   vim.fn.search(cw, 'c', vim.fn.line('.'))
--- end, {})
+
+-- tag cycler
+RT_CW = ''
+vim.keymap.set("n", "<C-]>", function()
+  local cw = vim.fn.expand("<cword>")
+  if cw ~= RT_CW then
+    vim.fn.execute("tag " .. cw)
+  elseif not pcall(vim.cmd, "tnext") then
+      vim.cmd[[trewind]]
+  end
+  RT_CW = cw
+  vim.fn.search(cw, 'c', vim.fn.line('.'))
+end, {})
 
 -- location commands
 vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", {})
@@ -53,20 +55,45 @@ vim.api.nvim_create_user_command("WritingOff", function()
 	vim.cmd([[ZenMode | PencilOff | spell&]])
 end, {})
 
--- lsp stuff
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set('n', 'gy', vim.lsp.codelens.run, opts)
-  end,
+-- lsp stuff
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+--   callback = function(ev)
+--     -- Enable completion triggered by <c-x><c-o>
+--     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+--
+--     -- Buffer local mappings.
+--     -- See `:help vim.lsp.*` for documentation on any of the below functions
+--     local opts = { buffer = ev.buf }
+--     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+--     vim.keymap.set('n', 'gy', vim.lsp.codelens.run, opts)
+--   end,
+-- })
+
+
+-- tags
+vim.api.nvim_create_autocmd('BufRead', {
+    pattern = { '*.rs' },
+    callback = function()
+        vim.opt_local.tags = "./rusty-tags.vi;/"
+    end,
 })
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { '*.rs' },
+    callback = function()
+        -- current file, full path, head for dir of file
+        local dir = vim.fn.expand('%:p:h')
+        local cmd = {'rusty-tags', 'vi', '--quiet', '--start-dir=' .. dir}
+
+        vim.system(cmd, {text = true}, function(obj)
+            print(obj.stderr)
+        end)
+    end
+})
+
+
 
 vim.keymap.set("n", "<leader>g", "<cmd>silent grep! <cword> | copen<CR>", {})
 
