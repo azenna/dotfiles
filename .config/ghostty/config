@@ -1,0 +1,21 @@
+theme = catppuccin-mocha
+
+keybind = alt+s=new_split:down
+
+keybind = alt+n=next_tab
+keybind = alt+t=new_tab
+keybind = alt+p=next_tab
+
+
+keybind = alt+j=goto_split:left
+keybind = alt+l=goto_split:right
+keybind = alt+k=goto_split:up
+keybind = alt+j=goto_split:down
+
+keybind = alt+v=new_split:right
+
+keybind = alt+e=close_surface
+keybind = alt+r=reload_config
+keybind = alt+o=open_config
+keybind = alt+f=toggle_fullscreen
+keybind = alt+d=toggle_window_decorations

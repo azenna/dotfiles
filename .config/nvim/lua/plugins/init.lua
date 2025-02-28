@@ -4,7 +4,8 @@ return {
 	"folke/twilight.nvim",
 	"folke/zen-mode.nvim",
 	"preservim/vim-pencil",
-  "kevinhwang91/nvim-bqf",
+    "kevinhwang91/nvim-bqf",
+    "tidalcycles/vim-tidal",
 	{
 		"mvllow/modes.nvim",
 		tag = "v0.2.0",
