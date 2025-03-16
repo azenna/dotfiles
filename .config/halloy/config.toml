@@ -1,5 +1,5 @@
 [servers.liberachat]
-nickname = "halloy-user"
+nickname = "azenna"
 server = "irc.libera.chat"
 channels = ["#halloy", "#haskell"]
 

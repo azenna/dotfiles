@@ -7,7 +7,7 @@ keybind = alt+t=new_tab
 keybind = alt+p=next_tab
 
 
-keybind = alt+j=goto_split:left
+keybind = alt+h=goto_split:left
 keybind = alt+l=goto_split:right
 keybind = alt+k=goto_split:up
 keybind = alt+j=goto_split:down
