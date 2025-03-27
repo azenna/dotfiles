@@ -16,6 +16,7 @@ fish_add_path "/opt/roc"
 fish_add_path "/opt/vim-tidal/bin/"
 fish_add_path "/opt/deno/bin/"
 fish_add_path "/opt/fly/bin/"
+fish_add_path "/opt/greenfoot/"
 
 starship init fish | source
 atuin init fish | source
@@ -28,3 +29,5 @@ set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 pyenv init - fish | source
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /home/zenna/.ghcup/bin # ghcup-env
+
+eval (opam env)
